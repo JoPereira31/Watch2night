@@ -1,0 +1,120 @@
+@use 'variables' as v;
+
+// Header principal
+.enteteSite {
+  position: relative;
+  margin: 0 15px;
+  background-color: v.$bg-card;
+  padding: 1rem;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  .conteneurHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .conteneurLogo {
+      width: 10%;
+
+      img {
+        width: 15vh;
+      }
+    }
+
+    .iconeActions {
+      display: flex;
+      gap: 2rem;
+      font-size: 1.5rem;
+      color: v.$text-main;
+
+      .btnOpenSearch {
+        padding-top: 2px;
+      }
+
+      a, i {
+        color: v.$text-main;
+        text-decoration: none;
+
+        &:hover {
+          color: v.$accent;
+        }
+      }
+    }
+
+    .barreRecherche {
+      display: none;
+
+      &.active {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: v.$bg-card;
+        padding: 1rem;
+      }
+
+      form {
+        display: flex;
+        gap: 0.5rem;
+
+        input {
+          flex: 1;
+          padding: 1rem;
+          border-radius: 5px;
+          border: none;
+        }
+
+        button {
+          background: v.$accent;
+          color: v.$bg-card;
+          border: none;
+          padding: 0.5rem 1rem;
+          border-radius: 5px;
+        }
+      }
+    }
+
+    .zoneUtilisateur {
+      display: none;
+    }
+  }
+}
+
+// Desktop uniquement
+@media (min-width: v.$breakpoint-desktop) {
+  .enteteSite {
+    .conteneurHeader {
+      .barreRecherche {
+        display: block;
+        position: static;
+        padding: 0;
+        max-width: 500px;
+        flex: 1;
+        margin: 0 2rem;
+      }
+
+      .iconeActions {
+        display: none;
+      }
+
+      .zoneUtilisateur {
+        display: flex;
+        gap: 1rem;
+
+        a {
+          color: v.$text-main;
+          text-decoration: none;
+
+          &:hover {
+            color: v.$accent;
+          }
+        }
+      }
+    }
+  }
+}

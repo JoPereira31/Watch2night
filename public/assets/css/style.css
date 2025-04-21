@@ -1,0 +1,1187 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #323232;
+  color: #a6a6a6;
+}
+
+h1, h2, h3 {
+  color: #ffc107;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  color: #e0a800;
+}
+
+.enteteSite {
+  position: relative;
+  margin: 0 15px;
+  background-color: #212121;
+  padding: 1rem;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.enteteSite .conteneurHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.enteteSite .conteneurHeader .conteneurLogo {
+  width: 10%;
+}
+.enteteSite .conteneurHeader .conteneurLogo img {
+  width: 15vh;
+}
+.enteteSite .conteneurHeader .iconeActions {
+  display: flex;
+  gap: 2rem;
+  font-size: 1.5rem;
+  color: #ffc107;
+}
+.enteteSite .conteneurHeader .iconeActions .btnOpenSearch {
+  padding-top: 2px;
+}
+.enteteSite .conteneurHeader .iconeActions a, .enteteSite .conteneurHeader .iconeActions i {
+  color: #ffc107;
+  text-decoration: none;
+}
+.enteteSite .conteneurHeader .iconeActions a:hover, .enteteSite .conteneurHeader .iconeActions i:hover {
+  color: #e0a800;
+}
+.enteteSite .conteneurHeader .barreRecherche {
+  display: none;
+}
+.enteteSite .conteneurHeader .barreRecherche.active {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #212121;
+  padding: 1rem;
+}
+.enteteSite .conteneurHeader .barreRecherche form {
+  display: flex;
+  gap: 0.5rem;
+}
+.enteteSite .conteneurHeader .barreRecherche form input {
+  flex: 1;
+  padding: 1rem;
+  border-radius: 5px;
+  border: none;
+}
+.enteteSite .conteneurHeader .barreRecherche form button {
+  background: #e0a800;
+  color: #212121;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+.enteteSite .conteneurHeader .zoneUtilisateur {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .enteteSite .conteneurHeader .barreRecherche {
+    display: block;
+    position: static;
+    padding: 0;
+    max-width: 500px;
+    flex: 1;
+    margin: 0 2rem;
+  }
+  .enteteSite .conteneurHeader .iconeActions {
+    display: none;
+  }
+  .enteteSite .conteneurHeader .zoneUtilisateur {
+    display: flex;
+    gap: 1rem;
+  }
+  .enteteSite .conteneurHeader .zoneUtilisateur a {
+    color: #ffc107;
+    text-decoration: none;
+  }
+  .enteteSite .conteneurHeader .zoneUtilisateur a:hover {
+    color: #e0a800;
+  }
+}
+footer {
+  background-color: #212121;
+  padding: 1.5rem 0;
+  border-top: 1px solid #323232;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+footer .contenuFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+footer .contenuFooter a {
+  color: #ffc107;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+footer .contenuFooter a:hover {
+  color: #e0a800;
+}
+
+@media (min-width: 768px) {
+  footer .contenuFooter {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+#accueil {
+  padding: 1rem;
+  background-color: #323232;
+  color: #a6a6a6;
+}
+#accueil #filmVedette {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  background-color: #212121;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+#accueil #filmVedette .imageFilm img {
+  width: 50%;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+#accueil #filmVedette .infosGlobales {
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+#accueil #filmVedette .infosGlobales h1 {
+  color: #ffc107;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+#accueil #filmVedette .infosGlobales .realisateur,
+#accueil #filmVedette .infosGlobales .synopsis,
+#accueil #filmVedette .infosGlobales .listeActeurs {
+  display: none;
+}
+#accueil #filmVedette .voirDetails {
+  display: inline-block;
+  background: #e0a800;
+  color: #212121;
+  padding: 0.7rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 2rem;
+}
+#accueil #genresContainer section {
+  margin-bottom: 1.5rem;
+}
+#accueil #genresContainer section h2 {
+  color: #ffc107;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+#accueil #genresContainer section .genreCarousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+}
+#accueil #genresContainer section .genreCarousel a {
+  flex: 0 0 auto;
+  width: 120px;
+  text-align: center;
+  color: #ffc107;
+  text-decoration: none;
+}
+#accueil #genresContainer section .genreCarousel a img {
+  width: 100%;
+  border-radius: 5px;
+}
+#accueil #genresContainer section .genreCarousel a p {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
+
+@media (min-width: 768px) {
+  #filmVedette {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+  #filmVedette .imageFilm {
+    width: 30%;
+  }
+  #filmVedette .imageFilm img {
+    width: 100%;
+  }
+  #filmVedette .infosGlobales {
+    width: 70%;
+    text-align: left;
+  }
+  #filmVedette .infosGlobales .realisateur,
+  #filmVedette .infosGlobales .synopsis,
+  #filmVedette .infosGlobales .listeActeurs {
+    display: block !important;
+    margin-top: 1rem;
+    color: #a6a6a6;
+  }
+  #filmVedette .infosGlobales .voirDetails {
+    margin-top: 2rem;
+  }
+  #genresContainer section .genreCarousel {
+    overflow-x: hidden;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+  #genresContainer section .genreCarousel .filmCard {
+    width: 200px !important;
+  }
+}
+/* === Section Mentions Légales === */
+#mentionsLegales {
+  padding: 2rem 1rem;
+  color: #a6a6a6;
+  background-color: #323232;
+  min-height: 100vh;
+}
+#mentionsLegales h1 {
+  text-align: center;
+  color: #ffc107;
+  margin-bottom: 2rem;
+}
+#mentionsLegales .conteneurMentions {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+#mentionsLegales .carteMentions {
+  background-color: #212121;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow: hidden;
+}
+#mentionsLegales .carteMentions h2 {
+  color: #ffc107;
+  font-size: 1.4rem;
+}
+#mentionsLegales .carteMentions p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  #mentionsLegales .conteneurMentions {
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 3rem;
+  }
+  #mentionsLegales .carteMentions {
+    width: 45%;
+    height: 450px;
+  }
+}
+#pageContact {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#pageContact .carteContact {
+  background-color: #212121;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 600px;
+}
+#pageContact .carteContact h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #ffc107;
+}
+#pageContact .carteContact form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+#pageContact .carteContact form .groupe {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+#pageContact .carteContact form .groupe label {
+  color: #a6a6a6;
+  font-size: 0.9rem;
+}
+#pageContact .carteContact form .groupe input, #pageContact .carteContact form .groupe textarea {
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #323232;
+  color: #ffc107;
+  font-size: 1rem;
+  resize: vertical;
+}
+#pageContact .carteContact form .groupe input:focus, #pageContact .carteContact form .groupe textarea:focus {
+  outline: 2px solid #e0a800;
+}
+#pageContact .carteContact form button {
+  align-self: center;
+  background-color: #e0a800;
+  color: #212121;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+#pageContact .carteContact form button:hover {
+  background-color: rgb(173, 129.75, 0);
+}
+
+#detailsFilm {
+  padding: 2rem;
+  background-color: #323232;
+  color: #ffc107;
+}
+#detailsFilm .infosFilm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+#detailsFilm .infosFilm .imageFilm img {
+  width: 100%;
+  border-radius: 10px;
+}
+#detailsFilm .infosFilm .infosGlobales {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+#detailsFilm .infosFilm .infosGlobales .titreEtWatchlist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#detailsFilm .infosFilm .infosGlobales h1 {
+  font-size: 2rem;
+}
+#detailsFilm .infosFilm .infosGlobales .realisateur,
+#detailsFilm .infosFilm .infosGlobales .synopsis {
+  color: #a6a6a6;
+  line-height: 1.5;
+}
+#detailsFilm .bandeAnnonce {
+  margin-top: 3rem;
+}
+#detailsFilm .bandeAnnonce h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+#detailsFilm .bandeAnnonce iframe {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+}
+#detailsFilm .acteursSection {
+  margin-top: 3rem;
+}
+#detailsFilm .acteursSection h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+#detailsFilm .acteursSection .listeActeurs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+#detailsFilm .acteursSection .listeActeurs .carteActeur {
+  text-align: center;
+}
+#detailsFilm .acteursSection .listeActeurs .carteActeur img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+#detailsFilm .acteursSection .listeActeurs .carteActeur p {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+#detailsFilm #commentaires {
+  margin-top: 3rem;
+  background-color: #212121;
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+#detailsFilm #commentaires h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+#detailsFilm #commentaires #listeCommentaires {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#detailsFilm #commentaires #listeCommentaires .commentaire {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #323232;
+}
+#detailsFilm #commentaires #listeCommentaires .commentaire .auteur {
+  font-style: italic;
+  font-weight: bold;
+  color: #ffc107;
+  margin-bottom: 0.5rem;
+}
+#detailsFilm #commentaires #listeCommentaires .commentaire .contenuEtActions p.contenu {
+  color: #a6a6a6;
+}
+#detailsFilm #commentaires form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+#detailsFilm #commentaires form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #323232;
+  color: #ffc107;
+  border-radius: 0.5rem;
+  border: none;
+  resize: vertical;
+}
+#detailsFilm #commentaires form button {
+  align-self: flex-end;
+  background-color: #e0a800;
+  color: #212121;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+#detailsFilm #commentaires p {
+  color: #a6a6a6;
+  text-align: center;
+}
+
+.btnWatchlist {
+  cursor: pointer;
+  color: #a6a6a6;
+  font-size: 1.8rem;
+  transition: color 0.3s;
+}
+.btnWatchlist.active {
+  color: #e0a800;
+}
+
+.popupWatchlist {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #212121;
+  color: #ffc107;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  animation: fadePopup 0.3s ease-in-out;
+}
+
+@keyframes fadePopup {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+.actionsCommentaire {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.actionsCommentaire button {
+  background: none;
+  border: none;
+  color: #a6a6a6;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+.actionsCommentaire button i {
+  font-size: 1rem;
+}
+.actionsCommentaire button:hover {
+  color: #e0a800;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal.hidden {
+  display: none;
+}
+.modal .modalContent {
+  background-color: #212121;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+.modal .modalContent h3 {
+  margin-bottom: 1rem;
+  color: #ffc107;
+}
+.modal .modalContent textarea {
+  width: 100%;
+  min-height: 100px;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+.modal .modalContent .btnsModal {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+.modal .modalContent .btnsModal .confirm {
+  background-color: #e0a800;
+  color: #212121;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.modal .modalContent .btnsModal button {
+  background: none;
+  color: #a6a6a6;
+  border: none;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  #detailsFilm .infosFilm {
+    flex-direction: row;
+    align-items: center;
+  }
+  #detailsFilm .infosFilm .imageFilm {
+    flex: 1;
+    width: 50%;
+  }
+  #detailsFilm .infosFilm .infosGlobales {
+    flex: 2;
+    text-align: left;
+    padding-top: 2rem;
+  }
+  #detailsFilm .bandeAnnonce iframe {
+    height: 400px;
+  }
+  #detailsFilm .acteursSection .listeActeurs .carteActeur img {
+    width: 100px;
+    height: 100px;
+  }
+  #detailsFilm #commentaires {
+    max-width: 800px;
+    margin: 4rem auto 2rem;
+  }
+  .actionsCommentaire button span {
+    display: none;
+  }
+  .actionsCommentaire button i {
+    font-size: 1.2rem;
+  }
+}
+#profilPage {
+  padding: 1rem;
+}
+#profilPage .enteteProfil {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+#profilPage .enteteProfil h1 {
+  color: #ffc107;
+  text-align: center;
+}
+#profilPage section {
+  margin-bottom: 2rem;
+}
+#profilPage section h2 {
+  color: #ffc107;
+  margin-bottom: 1rem;
+}
+#profilPage section form {
+  background-color: #212121;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#profilPage section form input {
+  padding: 0.5rem;
+  background-color: #323232;
+  color: #a6a6a6;
+  border: 1px solid #555;
+  border-radius: 6px;
+}
+#profilPage section form button {
+  background-color: #ffc107;
+  color: #323232;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.btnDeconnexion {
+  background-color: #ffc107;
+  color: #323232;
+  border: none;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  padding: 0.8rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto 0;
+}
+
+.successMessage {
+  color: limegreen;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.errorMessage {
+  color: red;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+#supprimerCompte {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#supprimerCompte .btnSupprimerCompte {
+  background-color: #212121;
+  color: #ffc107;
+  border: none;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalSuppression {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modalSuppression .modalContent {
+  background-color: #212121;
+  color: #ffc107;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+.modalSuppression .modalContent p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+.modalSuppression .modalContent .btnsModal {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.modalSuppression .modalContent button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+.modalSuppression .modalContent .confirm {
+  background-color: red;
+  color: #212121;
+}
+.modalSuppression .modalContent #btnCloseModal {
+  background-color: #e0a800;
+  color: #212121;
+}
+
+@media (min-width: 768px) {
+  #profilPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #profilPage .formulairesProfil {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    width: 100%;
+    max-width: 1100px;
+    align-items: stretch;
+  }
+  #profilPage .formulairesProfil #modifierInfos form,
+  #profilPage .formulairesProfil #modifierMdp form {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  #profilPage .formulairesProfil #modifierInfos,
+  #profilPage .formulairesProfil #modifierMdp {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+.watchlistSection {
+  margin-top: 2rem;
+}
+.watchlistSection h2 {
+  color: #ffc107;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.watchlistSection .carouselWatchlist {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+.watchlistSection .carouselWatchlist .filmCard {
+  flex: 0 0 auto;
+  width: 130px;
+  background-color: #212121;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.watchlistSection .carouselWatchlist .filmCard img {
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid #e0a800;
+}
+.watchlistSection .carouselWatchlist .filmCard p {
+  color: #a6a6a6;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  padding: 0 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .watchlistSection .carouselWatchlist {
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: hidden;
+  }
+}
+#pageRecherche {
+  padding: 1rem;
+  background-color: #323232;
+  color: #a6a6a6;
+}
+#pageRecherche h2 {
+  text-align: center;
+  color: #ffc107;
+  margin-bottom: 2rem;
+}
+#pageRecherche .listeResultat {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+}
+#pageRecherche .listeResultat .filmCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #ffc107;
+  transition: transform 0.3s ease;
+}
+#pageRecherche .listeResultat .filmCard img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+#pageRecherche .listeResultat .filmCard p {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  #pageRecherche .listeResultat {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+  }
+  #pageRecherche .listeResultat .filmCard img {
+    max-width: 100%;
+  }
+  #pageRecherche .listeResultat .filmCard p {
+    font-size: 1rem;
+  }
+}
+#authentificationPage {
+  background-color: #323232;
+  width: 100%;
+}
+#authentificationPage .carte {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+#authentificationPage .carteAuthentification.active .carte {
+  transform: rotateY(180deg);
+}
+#authentificationPage .face {
+  width: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  background-color: #212121;
+  padding: 3rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+#authentificationPage .face h1 {
+  color: #ffc107;
+  text-align: center;
+  font-size: 2rem;
+}
+#authentificationPage .face .erreur {
+  color: red;
+  text-align: center;
+  font-size: 0.9rem;
+}
+#authentificationPage .face form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+#authentificationPage .face input {
+  padding: 1rem;
+  background-color: #323232;
+  border: none;
+  border-radius: 5px;
+  color: #ffc107;
+  font-size: 1rem;
+}
+#authentificationPage .face input::placeholder {
+  color: #a6a6a6;
+}
+#authentificationPage .face input:focus {
+  outline: 2px solid #e0a800;
+}
+#authentificationPage .face button {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background-color: #e0a800;
+  color: #212121;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+#authentificationPage .face button:hover {
+  background-color: #e0a800;
+}
+#authentificationPage .face .lienAuthentification {
+  text-align: center;
+  color: #a6a6a6;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+#authentificationPage .face .lienAuthentification span, #authentificationPage .face .lienAuthentification a {
+  color: #e0a800;
+  cursor: pointer;
+}
+#authentificationPage .face .lienAuthentification span:hover, #authentificationPage .face .lienAuthentification a:hover {
+  text-decoration: underline;
+}
+#authentificationPage .face-back {
+  position: relative;
+  transform: rotateY(180deg);
+  margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+  #authentificationPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+}
+#adminPage {
+  padding: 2rem;
+  color: #ffc107;
+  background-color: #323232;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+#adminPage .enteteProfil {
+  text-align: center;
+}
+#adminPage .enteteProfil h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+#adminPage .enteteProfil p {
+  color: #a6a6a6;
+  font-size: 1.5rem;
+  text-align: center;
+}
+#adminPage #rechercheUtilisateurs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+#adminPage #rechercheUtilisateurs form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#adminPage #rechercheUtilisateurs form input[type=text] {
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #212121;
+  color: #ffc107;
+}
+#adminPage #rechercheUtilisateurs form input[type=text]::placeholder {
+  color: #a6a6a6;
+}
+#adminPage #rechercheUtilisateurs form input[type=text]:focus {
+  outline: 2px solid #e0a800;
+}
+#adminPage #rechercheUtilisateurs form button {
+  background-color: #e0a800;
+  color: #212121;
+  padding: 0.8rem;
+  border-radius: 5px;
+  font-weight: bold;
+  border: none;
+}
+#adminPage #rechercheUtilisateurs .tableUtilisateurs {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background-color: #212121;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+#adminPage #rechercheUtilisateurs .tableUtilisateurs th, #adminPage #rechercheUtilisateurs .tableUtilisateurs td {
+  padding: 1rem; /* Grossi un peu */
+  font-size: 1rem; /* Plus lisible */
+  text-align: left;
+  border-bottom: 1px solid #323232;
+  word-break: break-word;
+}
+#adminPage #rechercheUtilisateurs .tableUtilisateurs th {
+  background-color: #212121;
+  color: #e0a800;
+}
+#adminPage #rechercheUtilisateurs .tableUtilisateurs a {
+  color: red;
+  text-decoration: none;
+}
+#adminPage #rechercheUtilisateurs .tableUtilisateurs a:hover {
+  text-decoration: underline;
+}
+#adminPage #commentairesRecents h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+#adminPage #commentairesRecents ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#adminPage #commentairesRecents li {
+  background-color: #212121;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#adminPage #commentairesRecents li strong {
+  color: #e0a800;
+}
+#adminPage #commentairesRecents li em {
+  color: #a6a6a6;
+}
+#adminPage #commentairesRecents li form {
+  margin: 0;
+}
+#adminPage #commentairesRecents li button.btnSupprimerCommentaire {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+#adminPage .btnDeconnexion {
+  background-color: #e0a800;
+  color: #212121;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+  margin: 2rem auto 0;
+}
+
+.modalSuppUser {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  display: none;
+}
+.modalSuppUser.hidden {
+  display: none;
+}
+.modalSuppUser .modalContent {
+  background-color: #212121;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  color: #ffc107;
+  max-width: 400px;
+  width: 90%;
+}
+.modalSuppUser .modalContent .btnsModal {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+.modalSuppUser .modalContent button {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+.modalSuppUser .modalContent .confirm {
+  background-color: red;
+  color: #212121;
+}
+.modalSuppUser .modalContent #btnCloseModalUser, .modalSuppUser .modalContent #btnCloseModalCom {
+  background: none;
+  color: #a6a6a6;
+}
+
+@media (min-width: 768px) {
+  #adminPage {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  #rechercheUtilisateurs form {
+    flex-direction: row;
+    align-items: center;
+  }
+  #rechercheUtilisateurs form input[type=text] {
+    flex: 1;
+  }
+  #rechercheUtilisateurs form button {
+    margin-left: 1rem;
+    width: 120px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

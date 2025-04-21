@@ -1,0 +1,266 @@
+@use 'variables' as v;
+
+#accueil {
+  padding: 1rem;
+  background-color: v.$bg-main;
+  color: v.$text-secondary;
+
+  // Film Vedette
+  #filmVedette {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    background-color: v.$bg-card;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+    .imageFilm img {
+      width: 50%;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .infosGlobales {
+      margin-top: 1rem;
+      padding-top: 1rem;
+
+      h1 {
+        color: v.$text-main;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .realisateur,
+      .synopsis,
+      .listeActeurs {
+        display: none;
+      }
+    }
+
+    .voirDetails {
+      display: inline-block;
+      background: v.$accent;
+      color: v.$bg-card;
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 2rem;
+    }
+  }
+
+  // Genres
+  #genresContainer {
+    section {
+      margin-bottom: 1.5rem;
+
+      h2 {
+        color: v.$text-main;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      .genreCarousel {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 1rem;
+
+        a {
+          flex: 0 0 auto;
+          width: 120px;
+          text-align: center;
+          color: v.$text-main;
+          text-decoration: none;
+
+          img {
+            width: 100%;
+            border-radius: 5px;
+          }
+
+          p {
+            margin-top: 0.5rem;
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Desktop
+@media (min-width: v.$breakpoint-desktop) {
+  #filmVedette {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+
+    .imageFilm {
+      width: 30%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .infosGlobales {
+      width: 70%;
+      text-align: left;
+
+      .realisateur,
+      .synopsis,
+      .listeActeurs {
+        display: block !important;
+        margin-top: 1rem;
+        color: v.$text-secondary;
+      }
+
+      .voirDetails {
+        margin-top: 2rem;
+      }
+    }
+  }
+
+  #genresContainer {
+    section {
+      .genreCarousel {
+        overflow-x: hidden;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+
+        .filmCard {
+          width: 200px !important;
+        }
+      }
+    }
+  }
+}
+
+/* === Section Mentions Légales === */
+#mentionsLegales {
+  padding: 2rem 1rem;
+  color: v.$text-secondary;
+  background-color: v.$bg-main;
+  min-height: 100vh;
+
+  h1 {
+    text-align: center;
+    color: v.$text-main;
+    margin-bottom: 2rem;
+  }
+
+  .conteneurMentions {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .carteMentions {
+    background-color: v.$bg-card;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow: hidden;
+
+    h2 {
+      color: v.$text-main;
+      font-size: 1.4rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+  }
+}
+
+// Desktop pour mentions
+@media (min-width: v.$breakpoint-desktop) {
+  #mentionsLegales {
+    .conteneurMentions {
+      flex-direction: row;
+      justify-content: center;
+      align-items: stretch;
+      gap: 3rem;
+    }
+
+    .carteMentions {
+      width: 45%;
+      height: 450px; // <=== Hauteur FIXE Desktop
+    }
+  }
+}
+
+#pageContact {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .carteContact {
+    background-color: v.$bg-card;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 600px;
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: v.$text-main;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      .groupe {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        label {
+          color: v.$text-secondary;
+          font-size: 0.9rem;
+        }
+
+        input, textarea {
+          padding: 0.8rem;
+          border: none;
+          border-radius: 5px;
+          background-color: v.$bg-main;
+          color: v.$text-main;
+          font-size: 1rem;
+          resize: vertical;
+
+          &:focus {
+            outline: 2px solid v.$accent;
+          }
+        }
+      }
+
+      button {
+        align-self: center;
+        background-color: v.$accent;
+        color: v.$bg-card;
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: darken(v.$accent, 10%);
+        }
+      }
+    }
+  }
+}

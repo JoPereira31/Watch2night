@@ -1,0 +1,31 @@
+@use 'variables' as v;
+
+// Reset de base
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: v.$bg-main;
+  color: v.$text-secondary;
+}
+
+// Titres principaux
+h1, h2, h3 {
+  color: v.$text-main;
+}
+
+// Liens
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: v.$accent;
+  }
+}

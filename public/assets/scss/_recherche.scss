@@ -1,0 +1,63 @@
+// _recherche.scss
+
+@use 'variables' as v;
+
+#pageRecherche {
+  padding: 1rem;
+  background-color: v.$bg-main;
+  color: v.$text-secondary;
+
+  h2 {
+    text-align: center;
+    color: v.$text-main;
+    margin-bottom: 2rem;
+  }
+
+  .listeResultat {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); // Mobile-friendly
+    gap: 1rem;
+    justify-items: center;
+
+    .filmCard {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: v.$text-main;
+      transition: transform 0.3s ease;
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+      }
+
+      p {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        text-align: center;
+      }
+    }
+  }
+}
+
+// Responsive Desktop
+@media (min-width: v.$breakpoint-desktop) {
+  #pageRecherche {
+    .listeResultat {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); // Plus large sur desktop
+      gap: 2rem;
+
+      .filmCard {
+        img {
+          max-width: 100%;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

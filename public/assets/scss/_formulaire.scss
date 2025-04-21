@@ -1,0 +1,116 @@
+// _formulaire.scss
+@use 'variables' as v;
+
+#authentificationPage {
+  background-color: v.$bg-main;
+  width: 100%;
+
+  .carte {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  .carteAuthentification.active .carte {
+    transform: rotateY(180deg);
+  }
+
+  .face {
+    width: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    background-color: v.$bg-card;
+    padding: 3rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    h1 {
+      color: v.$text-main;
+      text-align: center;
+      font-size: 2rem;
+    }
+
+    .erreur {
+      color: red;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    input {
+      padding: 1rem;
+      background-color: v.$bg-main;
+      border: none;
+      border-radius: 5px;
+      color: v.$text-main;
+      font-size: 1rem;
+
+      &::placeholder {
+        color: v.$text-secondary;
+      }
+
+      &:focus {
+        outline: 2px solid v.$accent;
+      }
+    }
+
+    button {
+      margin-top: 0.5rem;
+      padding: 1rem;
+      background-color: v.$accent;
+      color: v.$bg-card;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: v.$accent;
+      }
+    }
+
+    .lienAuthentification {
+      text-align: center;
+      color: v.$text-secondary;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+
+      span, a {
+        color: v.$accent;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .face-back {
+    position: relative;
+    transform: rotateY(180deg);
+    margin-top: 40px;
+  }
+}
+
+// Responsive Desktop
+@media (min-width: v.$breakpoint-desktop) {
+  #authentificationPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+}
