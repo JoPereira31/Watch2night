@@ -9,6 +9,23 @@ require_once RACINE . '/model/bdd.php';
 function ajouterCommentaire($idFilm, $idUtilisateur, $contenu) {
     try {
         $bdd = connexionPDO();
+
+        // 1. Vérifier si le film existe déjà
+        $sqlCheck = "SELECT COUNT(*) FROM film WHERE id_film = :id_film";
+        $stmtCheck = $bdd->prepare($sqlCheck);
+        $stmtCheck->bindValue(':id_film', $idFilm, PDO::PARAM_INT);
+        $stmtCheck->execute();
+        $filmExiste = $stmtCheck->fetchColumn();
+
+        // 2. Si le film n'existe pas, on l'ajoute avec un titre par défaut
+        if (!$filmExiste) {
+            $sqlInsertFilm = "INSERT INTO film (id_film, titre) VALUES (:id_film, 'Titre inconnu')";
+            $stmtInsertFilm = $bdd->prepare($sqlInsertFilm);
+            $stmtInsertFilm->bindValue(':id_film', $idFilm, PDO::PARAM_INT);
+            $stmtInsertFilm->execute();
+        }
+
+        // 3. Ensuite, insérer le commentaire
         $sql = "INSERT INTO commentaire (contenu, date_com, id_film, id_utilisateur)
                 VALUES (:contenu, NOW(), :idFilm, :idUtilisateur)";
         $stmt = $bdd->prepare($sql);

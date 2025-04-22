@@ -4,7 +4,7 @@ require_once RACINE . '/model/commentaireDb.php';
 
 header('Content-Type: application/json');
 
-// 🧹 Nettoyage : GET → Récupérer les commentaires
+//  Nettoyage : GET → Récupérer les commentaires
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id_film'])) {
     $idFilm = (int)$_GET['id_film'];
     
@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id_film'])) {
     exit;
 }
 
-// 🧹 POST → Ajouter un commentaire
+//  POST → Ajouter un commentaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['contenu']) && !empty($_POST['id_film'])) {
     if (!isset($_SESSION['id'])) {
         echo json_encode(['error' => 'Utilisateur non connecté']);
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['contenu']) && !empty
     exit;
 }
 
-// 🧹 POST → Supprimer un commentaire
+//  POST → Supprimer un commentaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'supprimer_commentaire') {
     if (!isset($_SESSION['id'])) {
         echo json_encode(['error' => 'Non connecté']);
@@ -71,6 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 }
 
 
-// ❌ Sinon : Mauvaise requête
+//  Sinon : Mauvaise requête
 http_response_code(400);
 echo json_encode(['error' => 'Requête invalide']);

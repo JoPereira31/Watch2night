@@ -54,7 +54,7 @@ const inputNouveauContenu = document.getElementById('nouveauContenu');
 // Fonction pour charger les commentaires
 async function chargerCommentaires(idFilm) {
   try {
-    const response = await fetch(`commentaire&id_film=${idFilm}`); // Appelle l'API pour récupérer les commentaires
+    const response = await fetch(`commentaire?id_film=${idFilm}`); // Appelle l'API pour récupérer les commentaires
     const commentaires = await response.json();
 
     const container = document.getElementById('listeCommentaires');
