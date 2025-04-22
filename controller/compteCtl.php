@@ -8,22 +8,12 @@ if (!isset($_SESSION['id'])) {
   exit;
 }
 
-// Génère un token CSRF si pas déjà présent
-if (empty($_SESSION['token'])) {
-  $_SESSION['token'] = bin2hex(random_bytes(32));
-}
 
 $idUtilisateur = $_SESSION['id'];
 $pseudo = $_SESSION['pseudo'];
 
 // Traitement des formulaires
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-  // Vérification token CSRF
-  if (!isset($_POST['token']) || $_POST['token'] !== $_SESSION['token']) {
-    die('Erreur de sécurité CSRF');
-  }
-
   // Modifier les infos (pseudo/email)
   if (!empty($_POST['maj_infos'])) {
     $nouveauPseudo = trim($_POST['nouveau_pseudo'] ?? '');
@@ -31,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (majUtilisateur($idUtilisateur, $nouveauPseudo, $nouvelEmail)) {
       $_SESSION['pseudo'] = $nouveauPseudo ?: $_SESSION['pseudo'];
-      header('Location: profil?infos=ok');
+      header('Location: compte');
       exit;
     }
   }
@@ -43,15 +33,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $confirmation = $_POST['confirmation_mdp'];
 
     if ($nouveau !== $confirmation || strlen($nouveau) < 6) {
-      header('Location: profil?erreur=validation');
+      header('Location: compte');
       exit;
     }
 
     if (changerMdp($idUtilisateur, $ancien, $nouveau)) {
-      header('Location: profil?mdp=ok');
+      header('Location: compte');
       exit;
     } else {
-      header('Location: profil?erreur=mdp');
+      header('Location: compte');
       exit;
     }
   }

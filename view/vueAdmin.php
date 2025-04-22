@@ -50,7 +50,6 @@ include_once RACINE . '/view/layout/header.php';
                 <form method="POST" action="admin" class="formSuppressionUtilisateur" id="formSuppUser<?= $user['id_utilisateur'] ?>">
                   <input type="hidden" name="action" value="supprimerUtilisateur">
                   <input type="hidden" name="id_utilisateur" value="<?= $user['id_utilisateur'] ?>">
-                  <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                   <button type="button" class="btnSupprimerUtilisateur" data-id="<?= $user['id_utilisateur'] ?>">
                     <i class="fas fa-trash"></i>
                   </button>
@@ -82,7 +81,6 @@ include_once RACINE . '/view/layout/header.php';
             <form method="POST" action="admin" class="formSuppressionCommentaire" id="formSuppCom<?= $commentaire['id_com'] ?>">
               <input type="hidden" name="action" value="supprimerCommentaire">
               <input type="hidden" name="id_commentaire" value="<?= $commentaire['id_com'] ?>">
-              <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
               <button type="button" class="btnSupprimerCommentaire" data-id="<?= $commentaire['id_com'] ?>">
                 <i class="fas fa-trash"></i>
               </button>

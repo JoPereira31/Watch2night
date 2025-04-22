@@ -1,39 +1,7 @@
 <?php
 
 function charger_controleur($action) {
-    try {
-        // Traitement spécial pour les actions envoyées en POST (ex: suppression utilisateur/commentaire)
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['action'])) {
-                switch ($_POST['action']) {
-                    case 'supprimerUtilisateur':
-                        if (!empty($_POST['token']) && hash_equals($_SESSION['token'], $_POST['token'])) {
-                            require_once RACINE . '/model/utilisateurDb.php';
-                            supprimerUtilisateur((int)$_POST['id_utilisateur']);
-                            header('Location: index.php?url=admin');
-                            exit;
-                        } else {
-                            header('Location: index.php?url=erreur&code=403');
-                            exit;
-                        }
-
-                    case 'supprimerCommentaire':
-                        if (!empty($_POST['token']) && hash_equals($_SESSION['token'], $_POST['token'])) {
-                            require_once RACINE . '/model/commentaireDb.php';
-                            supprimerCommentaire((int)$_POST['id_commentaire']);
-                            header('Location: index.php?url=admin');
-                            exit;
-                        } else {
-                            header('Location: index.php?url=erreur&code=403');
-                            exit;
-                        }
-                }
-            }
-        }
-
-        // Si ce n'est pas un POST spécifique, traitement classique
         switch ($action) {
-            case '':
             case 'accueil':
                 require_once RACINE . '/controller/accueilCtl.php';
                 break;
@@ -49,7 +17,7 @@ function charger_controleur($action) {
 
             case 'compte':
                 if (!isset($_SESSION['id'])) {
-                    header("Location: index.php?url=connexion");
+                    header("Location:=connexion");
                     exit;
                 }
                 require_once RACINE . '/controller/compteCtl.php';
@@ -65,7 +33,7 @@ function charger_controleur($action) {
 
             case 'admin':
                 if (!isset($_SESSION['id']) || $_SESSION['role'] !== 'admin') {
-                    header("Location: index.php?url=erreur&code=403");
+                    header("Location: erreur&code=403");
                     exit;
                 }
                 require_once RACINE . '/controller/adminCtl.php';
@@ -102,11 +70,5 @@ function charger_controleur($action) {
                 afficherErreur(404);
                 break;
         }
-    } catch (Throwable $e) {
-        // Gestion d'une erreur PHP grave
-        require_once RACINE . '/controller/erreurCtl.php';
-        afficherErreur(500);
-    }
 }
-
 ?>

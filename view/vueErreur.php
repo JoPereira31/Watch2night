@@ -1,5 +1,9 @@
 <?php
+$titrePage = "Erreur - Watch2Night";
+$descriptionPage = "Une erreur est survenue.";
 
+include_once RACINE . '/view/layout/head.php'; 
+include_once RACINE . '/view/layout/header.php'; 
 // On récupère le message d'erreur en session, sinon message générique
 $messageErreur = $_SESSION['erreur_message'] ?? "Une erreur est survenue.";
 ?>
@@ -10,3 +14,6 @@ $messageErreur = $_SESSION['erreur_message'] ?? "Une erreur est survenue.";
         <a href="accueil" class="btnRetourAccueil">Retour à l'accueil</a>
     </section>
 </main>
+<?php 
+include_once RACINE . '/view/layout/footer.php'; 
+?>

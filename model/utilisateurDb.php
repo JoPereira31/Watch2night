@@ -60,33 +60,41 @@ function verifieConnexion($pseudo, $motDePasse) {
 
 /*
 * majUtilisateur : Met à jour le pseudo ou email d'un utilisateur.
-* paramètre : idUtilisateur (int), nouveauPseudo (string|null), nouvelEmail (string|null)
-* retourne : true si modifié, false sinon
+* paramètre : idUtilisateur , nouveauPseudo , nouvelEmail 
+* retourne :
 */
 function majUtilisateur($idUtilisateur, $nouveauPseudo, $nouvelEmail) {
     try {
         $bdd = connexionPDO();
-        $sqlSelect = "SELECT pseudo, email FROM utilisateur WHERE id_utilisateur = :id";
-        $reqSelect = $bdd->prepare($sqlSelect);
-        $reqSelect->execute(['id' => $idUtilisateur]);
-        $utilisateur = $reqSelect->fetch(PDO::FETCH_ASSOC);
 
-        if (!$utilisateur) {
+        // On vérifie si au moins un champ est rempli
+        if (empty($nouveauPseudo) && empty($nouvelEmail)) {
             return false;
         }
 
-        $pseudoFinal = !empty($nouveauPseudo) ? $nouveauPseudo : $utilisateur['pseudo'];
-        $emailFinal = !empty($nouvelEmail) ? $nouvelEmail : $utilisateur['email'];
+        $fields = [];
+        $params = [];
 
-        $sqlUpdate = "UPDATE utilisateur SET pseudo = :pseudo, email = :email WHERE id_utilisateur = :id";
-        $reqUpdate = $bdd->prepare($sqlUpdate);
-        return $reqUpdate->execute([
-            'pseudo' => $pseudoFinal,
-            'email' => $emailFinal,
-            'id' => $idUtilisateur
-        ]);
+        if (!empty($nouveauPseudo)) {
+            $fields[] = "pseudo = ?";
+            $params[] = $nouveauPseudo;
+        }
+
+        if (!empty($nouvelEmail)) {
+            $fields[] = "email = ?";
+            $params[] = $nouvelEmail;
+        }
+
+        // Ajout de l'ID utilisateur à la fin des paramètres
+        $params[] = $idUtilisateur;
+
+        $sql = "UPDATE utilisateur SET " . implode(", ", $fields) . " WHERE id_utilisateur = ?";
+        $stmt = $bdd->prepare($sql);
+
+        return $stmt->execute($params);
+        
     } catch (PDOException $e) {
-        redirigerErreur("Erreur mise à jour profil : " . $e->getMessage(), 500);
+        redirigerErreur("Erreur mise à jour utilisateur : " . $e->getMessage(), 500);
     }
 }
 

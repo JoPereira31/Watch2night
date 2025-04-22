@@ -1,8 +1,17 @@
 @charset "UTF-8";
+/* roboto-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/roboto-v47-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto";
 }
 
 html, body {
@@ -365,7 +374,7 @@ footer .contenuFooter a:hover {
   transition: background-color 0.3s;
 }
 #pageContact .carteContact form button:hover {
-  background-color: rgb(173, 129.75, 0);
+  background-color: #e0a800;
 }
 
 #detailsFilm {
@@ -1182,6 +1191,21 @@ footer .contenuFooter a:hover {
     margin-left: 1rem;
     width: 120px;
   }
+}
+#pageErreur {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.conteneurErreur {
+  background-color: #212121;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 600px;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -217,7 +217,7 @@ async function afficherResultatsRecherche() {
 
   films.forEach(film => {
     const card = document.createElement('a');
-    card.href = `./jordan-pereira/Watch2Night/film?id=${film.id}`;
+    card.href = `film?id=${film.id}`;
 
     card.classList.add('filmCard');
 

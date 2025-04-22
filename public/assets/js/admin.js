@@ -34,15 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 inputId.name = 'id_utilisateur';
                 inputId.value = userId;
 
-                const inputToken = document.createElement('input');
-                inputToken.type = 'hidden';
-                inputToken.name = 'token';
-                inputToken.value = csrfToken; // ← ← ← Ici on ajoute le token
 
                 form.appendChild(inputAction);
                 form.appendChild(inputId);
-                form.appendChild(inputToken);
-
                 document.body.appendChild(form);
                 form.submit();
             }
@@ -87,14 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 inputId.name = 'id_commentaire';
                 inputId.value = idCom;
 
-                const inputToken = document.createElement('input');
-                inputToken.type = 'hidden';
-                inputToken.name = 'token';
-                inputToken.value = csrfToken; // ← ← ← Ici aussi on ajoute le token
-
                 form.appendChild(inputAction);
                 form.appendChild(inputId);
-                form.appendChild(inputToken);
 
                 document.body.appendChild(form);
                 form.submit();

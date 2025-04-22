@@ -10,12 +10,6 @@ include_once RACINE . '/view/layout/header.php';
 ?>
 
 <main id="profilPage">
-
-    <!-- Petit script pour avoir le token en JavaScript aussi -->
-    <script>
-        const csrfToken = '<?= $_SESSION['token'] ?>';
-    </script>
-
     <!-- En-tête de la page de profil -->
     <div class="enteteProfil">
         <h1>Bonjour, <?= htmlspecialchars($pseudo) ?></h1> <!-- Affiche le pseudo de l'utilisateur connecté -->
@@ -52,9 +46,8 @@ include_once RACINE . '/view/layout/header.php';
         <!-- SECTION : Modifier le pseudo ou l'email -->
         <section id="modifierInfos">
             <h2>Modifier mes informations</h2>
-            <form method="POST" action="profil">
+            <form method="POST" action="compte">
                 <input type="hidden" name="maj_infos" value="1">
-                <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>"> <!-- Ajout du token -->
                 <input type="text" name="nouveau_pseudo" placeholder="Nouveau pseudo">
                 <input type="email" name="nouvel_email" placeholder="Nouvel email">
                 <button type="submit">Enregistrer</button>
@@ -64,8 +57,7 @@ include_once RACINE . '/view/layout/header.php';
         <!-- SECTION : Changer de mot de passe -->
         <section id="modifierMdp">
             <h2>Changer mon mot de passe</h2>
-            <form method="POST" action="profil">
-                <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>"> <!-- Ajout du token -->
+            <form method="POST" action="compte">
                 <input type="password" name="ancien_mdp" id="ancien_mdp" placeholder="Mot de passe actuel" required>
                 <input type="password" name="nouveau_mdp" id="nouveau_mdp" placeholder="Nouveau mot de passe" required>
                 <input type="password" name="confirmation_mdp" id="confirmation_mdp" placeholder="Confirmer le mot de passe" required>
@@ -82,9 +74,8 @@ include_once RACINE . '/view/layout/header.php';
         <div class="modalSuppression" id="modalSuppression">
             <div class="modalContent">
                 <p>Êtes-vous sûr de vouloir supprimer votre compte ?<br>Cela est irréversible.</p>
-                <form method="POST" action="profil">
+                <form method="POST" action="compte">
                     <input type="hidden" name="supprimer_compte" value="1">
-                    <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                     <button type="submit" class="btnSupprimerCompte confirm">Confirmer</button>
                     <button type="button" id="btnCloseModal">Annuler</button>
                 </form>

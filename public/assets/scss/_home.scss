@@ -190,7 +190,7 @@
 
     .carteMentions {
       width: 45%;
-      height: 450px; // <=== Hauteur FIXE Desktop
+      height: 450px;
     }
   }
 }
@@ -258,7 +258,7 @@
         transition: background-color 0.3s;
 
         &:hover {
-          background-color: darken(v.$accent, 10%);
+          background-color: v.$accent;
         }
       }
     }
