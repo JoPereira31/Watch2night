@@ -1,4 +1,5 @@
 <?php
+session_name("watch2night");
 session_start();
 define('RACINE', __DIR__);
 

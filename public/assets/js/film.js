@@ -222,7 +222,7 @@ async function afficherResultatsRecherche() {
     card.classList.add('filmCard');
 
     const img = document.createElement('img');
-    img.src = film.poster_path ? `${baseImg}${film.poster_path}` : 'assets/img/placeholder.jpg';
+    img.src = film.poster_path ? `${baseImg}${film.poster_path}` : 'public/assets/images/placeholder.webp';
     img.alt = film.title;
 
     const titreFilm = document.createElement('p');

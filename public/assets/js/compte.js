@@ -74,7 +74,7 @@ async function loadWatchlist() {
   for (const film of films) {
     if (film) {
       const card = document.createElement('a'); // Création d'un lien pour chaque film
-      card.href = `film&id=${film.id}`;
+      card.href = `film?id=${film.id}`;
       card.className = 'filmCard';
       card.innerHTML = `
         <img src="${baseImg}${film.poster_path}" alt="${film.title}">

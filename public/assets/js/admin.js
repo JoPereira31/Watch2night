@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
 
     // MODALE SUPPRESSION UTILISATEUR
     const modalUser = document.getElementById('modalSuppUser');
